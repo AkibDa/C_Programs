@@ -29,9 +29,9 @@ int main() {
     digit1 = (temp % 10 + 1) % 10;
     
     if (digit1 == 0 && digit2 == 0 && digit3 == 0 && digit4 == 0 && digit5 == 0) {
-        printf("Modified number: 0\n");
+        printf("New number after incrementing each digit: 0\n");
     } else {
-        printf("Modified number: %d%d%d%d%d\n", digit1, digit2, digit3, digit4, digit5);
+        printf("New number after incrementing each digit: %d%d%d%d%d\n", digit1, digit2, digit3, digit4, digit5);
     }
     
     return 0;
