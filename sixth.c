@@ -1,38 +1,40 @@
 #include <stdio.h>
-
-int main() {
-    int num, temp;
-    int digit1, digit2, digit3, digit4, digit5;
+int main(){
+    
+    int num,temp;
+    int d1,d2,d3,d4,d5;
     
     printf("Enter a five-digit number: ");
-    scanf("%d", &num);
+    scanf("%d",&num);
     
-    if (num < -99999 || num > 99999 || (num > -10000 && num < 10000)) {
-        printf("Invalid input! Please enter a five-digit number.\n");
-        return 1;
-    }
-    
-    int is_negative = (num < 0);
+    int is_negative = (num<0);
     if (is_negative) {
         num = -num;
     }
-    
+    if(num<-99999 || num>99999 || (num>-10000 && num<10000)) {
+        printf("Invalid input! Please enter a five-digit number.\n");
+        return 1;
+    }
+     
     temp = num;
-    digit5 = (temp % 10 + 1) % 10;
+    d5 = (temp % 10 + 1) % 10;
     temp /= 10;
-    digit4 = (temp % 10 + 1) % 10;
+    d4 = (temp % 10 + 1) % 10;
     temp /= 10;
-    digit3 = (temp % 10 + 1) % 10;
+    d3 = (temp % 10 + 1) % 10;
     temp /= 10;
-    digit2 = (temp % 10 + 1) % 10;
+    d2 = (temp % 10 + 1) % 10;
     temp /= 10;
-    digit1 = (temp % 10 + 1) % 10;
+    d1 = (temp % 10 + 1) % 10;
     
-    if (digit1 == 0 && digit2 == 0 && digit3 == 0 && digit4 == 0 && digit5 == 0) {
+    
+    if(d1==0 && d2==0 && d3==0 && d4==0 && d5==0){
         printf("New number after incrementing each digit: 0\n");
-    } else {
-        printf("New number after incrementing each digit: %d%d%d%d%d\n", digit1, digit2, digit3, digit4, digit5);
+    }
+    else {
+        printf("New number after incrementing each digit: %d%d%d%d%d\n",d1,d2,d3,d4,d5);
     }
     
     return 0;
+    
 }
