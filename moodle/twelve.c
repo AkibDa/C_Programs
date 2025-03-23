@@ -1,11 +1,11 @@
 #include <stdio.h>
 int main(){
     int n,count=0;
-    scanf("%d",&n);
+    scanf("%d",&n); 
     if(n>1){
-        for(int i=1;i<=n;i++){
+        for(int i=1;i<=n;i++){ 
          if(n%i==0){
-            count++;
+            count++;         
             }
         }
         if(count ==  2){
@@ -18,8 +18,5 @@ int main(){
     else {
         printf("Invalid input! Number should be greater than or equal to 2.");
     }
-    
-    
-    
     return 0;
 }
