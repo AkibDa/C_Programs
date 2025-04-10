@@ -1,45 +1,27 @@
 #include<stdio.h>
-#include<stdlib.h>
 int main(){
-    int n, *p, s, c=0;
+    int n;
     scanf("%d",&n);
-    if(n<1){
-        printf("Invalid input! Array size must be positive.");
-    }
-    else{
-       p = (int *)malloc(n*sizeof(int));
-       if(p==NULL)
-        printf("Memory allocation failed.");
-    srand(time(NULL));
-    for(int i=0;i<n;i++){
-        *(p+i)=rand()%9900+100;
-    }
-    printf(" Generated array: <random_numbers>");
-    // for(int i=0;i<n;i++){
-    //     printf("%d ",*(p+i));
-    // }
-    scanf("%d",&s);
-    if(s>=100 && s<=10000){
-        for(int i=0;i<n;i++){
-        if(s == *(p+i)){
-            c++;
-        }
-        else {
-            c=0;
-        }
-    }
-    if(c==1){
-        printf("\n%d is found in the array.",s);
+    if(n<0){
+        printf("Invalid input! Decimal number must be non-negative");
     }
     else {
-        printf("\n%d is not found in the array.",s);
-    }
-    }
-    else {
-        printf("Invalid input! Number must be between 100 and 10000.");
-    }
-    
-    free(p); 
+        int p=1, rem;
+        int bin=0;
+        
+        while(n!=0){
+            rem=n%2;
+            n/=2;
+            if(rem==0){
+                p*=10;
+            }
+            else {
+                p*=10;
+                bin+=p*rem;
+            }
+        }
+        bin/=10;
+        printf("Binary equivalent: %d", bin);
     }
     
     return 0;
