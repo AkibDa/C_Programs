@@ -20,10 +20,10 @@ int main() {
     printf("Roots are real and equal: %.2f and %.2f\n", root1, root1);
   }
   else {
-    float realPart = -b / (2 * a);
-    float imagPart = sqrt(-d) / (2 * a);
+    float realP = -b / (2 * a);
+    float imagP = sqrt(-d) / (2 * a);
     printf("Roots are complex and imaginary: %.2f + %.2fi and %.2f - %.2fi\n",
-            realPart, imagPart, realPart, imagPart);
+            realP, imagP, realP, imagP);
   }
 
   return 0;
