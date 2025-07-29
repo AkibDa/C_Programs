@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h> // For bool type
 
 #define MAX_SIZE 100
 
@@ -24,22 +23,14 @@ int main() {
     printf("Enter the element to search: ");
     scanf("%d", &elementToSearch);
 
-    bool found = false;
-    int index = -1;
-
     for (int i = 0; i < size; i++) {
         if (arr[i] == elementToSearch) {
-            found = true;
-            index = i;
-            break; // Element found, no need to continue searching
+            printf("Element %d found at index %d\n", elementToSearch, i);
+            return 0; // Element found, no need to continue searching
         }
     }
 
-    if (found) {
-        printf("Element %d found at index %d\n", elementToSearch, index);
-    } else {
-        printf("Element %d not found in the array.\n", elementToSearch);
-    }
+    printf("Element %d not found in the array.\n", elementToSearch);
 
     return 0;
 }
