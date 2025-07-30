@@ -1,22 +1,19 @@
 #include <stdio.h>
-#include <stdlib.h> // Required for exit()
+#include <stdlib.h>
 
-#define MAX_SIZE 5 // Define the maximum size of the stack
+#define MAX_SIZE 5
 
-int stack[MAX_SIZE]; // Array to store stack elements
-int top = -1;        // Initialize top of the stack to -1 (empty stack)
+int stack[MAX_SIZE]; 
+int top = -1;        
 
-// Function to check if the stack is empty
 int isEmpty() {
   return top == -1;
 }
 
-// Function to check if the stack is full
 int isFull() {
   return top == MAX_SIZE - 1;
 }
 
-// Function to push an element onto the stack
 void push(int data) {
   if (isFull()) {
     printf("Stack Overflow! Cannot push %d.\n", data);
@@ -27,11 +24,10 @@ void push(int data) {
   }
 }
 
-// Function to pop an element from the stack
 int pop() {
   if (isEmpty()) {
     printf("Stack Underflow! Cannot pop from empty stack.\n");
-    return -1; // Return a sentinel value indicating error
+    return -1; 
   } else {
     int popped_item = stack[top];
     top--;
@@ -40,7 +36,6 @@ int pop() {
   }
 }
 
-// Function to peep (view) the top element of the stack
 int peep() {
   if (isEmpty()) {
     printf("Stack is empty! No element to peep.\n");
@@ -51,7 +46,6 @@ int peep() {
   }
 }
 
-// Function to display all elements in the stack
 void display() {
   if (isEmpty()) {
     printf("Stack is empty. Nothing to display.\n");
@@ -96,7 +90,7 @@ int main() {
         break;
       case 5:
         printf("Exiting program.\n");
-        exit(0); // Exit the program
+        exit(0); 
       default:
         printf("Invalid choice! Please try again.\n");
     }
