@@ -4,7 +4,18 @@
 
 void disp(){}
 
-void search(){}
+void search(int *arr, int size, int element){
+
+    for(int i=0;i<size;i++){
+        if(arr[i] == element){
+            printf("Element %d found at position %d\n", element, i + 1);
+            return;
+        }
+    }
+    printf("Element %d not found in the array.\n", element);
+    return;
+
+}
 
 void sort(){}
 
@@ -84,7 +95,9 @@ int main(){
             }
             break;
             case 3:
-            search(arr, size);
+                printf("Enter the element to search: ");
+                scanf("%d", &element);
+                search(arr, size, element);
             break;
             case 4:
             sort(arr, size);
