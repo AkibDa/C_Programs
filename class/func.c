@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAXSIZE
+#define MAXSIZE 10
+
+void disp(){}
 
 int main(){
     int *arr;
@@ -10,7 +12,7 @@ int main(){
     printf("Enter the number of elements: ");
     scanf("%d", &size);
 
-    arr = (int *)malloc((size + 1) * sizeof(int));
+    arr = (int *)malloc((MAXSIZE) * sizeof(int));
     if (arr == NULL) {
         printf("Memory allocation failed.\n");
         return 1;
@@ -27,15 +29,26 @@ int main(){
 
     while(1){
         swtich(ch) {
+            case 1:
+            break;
+            case 2:
+            break;
+            case 3:
+            break;
+            case 4:
+            break;
+            case 5:
+            break;
             case 6:
                 printf("Exiting...\n");
                 exit(0);
+            break;
+            default:
+                printf("Invalid choice!");
         }
     }
 
-
     free(arr);
-
 
   return 0;
 }
