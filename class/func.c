@@ -8,7 +8,23 @@ void search(){}
 
 void sort(){}
 
-void insert(){}
+void insert(int *arr, int size, int element, int position) {
+
+    if(position < 0 || position > size) {
+        printf("Invalid position!\n");
+    }
+
+    for(int i = size; i > position-1; i--) {
+            arr[i] = arr[i - 1];
+        }
+
+    arr[position-1] = element;
+    size++;
+
+    printf("Element inserted successfully.\n");
+
+    disp(arr, size);
+}
 
 void delete(){}
 
@@ -38,8 +54,15 @@ int main(){
     while(1){
         switch(ch) {
             case 1:
-            insert(arr, size);
-            printf("Element inserted successfully.\n");
+            if(size == MAXSIZE-1) {
+                printf("Array is full. Cannot insert more elements.\n");
+            } else {
+                printf("Enter the element to insert: ");
+                scanf("%d", &element);
+                printf("Enter the position to insert (0 to %d): ", size);
+                scanf("%d", &position);
+                insert(arr, size, element, position);
+            }
             break;
             case 2:
             delete(arr, size);
