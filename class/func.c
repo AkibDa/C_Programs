@@ -2,7 +2,20 @@
 #include <stdlib.h>
 #define MAXSIZE 10
 
-void disp(){}
+void disp(int *arr, int size){
+
+    if(size == 0) {
+        printf("Array is empty.\n");
+        return;
+    }
+    printf("Array elements are: ");
+    for(int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return;
+
+}
 
 void search(int *arr, int size, int element){
 
@@ -71,6 +84,11 @@ int main(){
 
     printf("Enter the number of elements: ");
     scanf("%d", &size);
+
+    if(size<=0 || size > MAXSIZE) {
+        printf("Invalid size! Please enter a size between 1 and %d.\n", MAXSIZE);
+        return 1;
+    }
 
     arr = (int *)malloc((MAXSIZE) * sizeof(int));
     if (arr == NULL) {
