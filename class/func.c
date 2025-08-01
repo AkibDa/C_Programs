@@ -44,6 +44,7 @@ void sort(int *arr, int size){
     }
     printf("Array sorted successfully.\n");
     disp(arr, size);
+    return;
 
 }
 
