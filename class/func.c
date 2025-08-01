@@ -13,20 +13,30 @@ void insert(int *arr, int size, int element, int position) {
     if(position < 0 || position > size) {
         printf("Invalid position!\n");
     }
-
     for(int i = size; i > position-1; i--) {
             arr[i] = arr[i - 1];
         }
 
     arr[position-1] = element;
     size++;
-
     printf("Element inserted successfully.\n");
-
     disp(arr, size);
 }
 
-void delete(){}
+void delete(int *arr, int size, int position){
+
+    if (position < 1 || position > size) {
+        printf("Invalid position!\n");
+        return;
+    }
+    for(int i = position - 1; i < size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    size--;
+    printf("Element deleted successfully.\n");
+    disp(arr, size);
+
+}
 
 int main(){
     int *arr;
@@ -65,7 +75,13 @@ int main(){
             }
             break;
             case 2:
-            delete(arr, size);
+            if(size == 0) {
+                printf("Array is empty. Cannot delete elements.\n");
+            } else {
+                printf("Enter the position to delete (1 to %d): ", size);
+                scanf("%d", &position);
+                delete(arr, size, position);
+            }
             break;
             case 3:
             search(arr, size);
