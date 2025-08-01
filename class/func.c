@@ -60,6 +60,7 @@ void insert(int *arr, int size, int element, int position) {
     size++;
     printf("Element inserted successfully.\n");
     disp(arr, size);
+    return;
 }
 
 void delete(int *arr, int size, int position){
@@ -74,6 +75,7 @@ void delete(int *arr, int size, int position){
     size--;
     printf("Element deleted successfully.\n");
     disp(arr, size);
+    return;
 
 }
 
@@ -101,8 +103,8 @@ int main(){
         scanf("%d", &arr[i]);
     }
 
-    printf("\nEnter your choice: ");
-    printf("Press 1 to Insert\nPress 2 to Delete\nPress 3 to Search\nPress 4 to Sort\nPress 5 to Display\nPress 6 to Exit");
+    printf("\nEnter your choice:\n");
+    printf("Press 1 to Insert\nPress 2 to Delete\nPress 3 to Search\nPress 4 to Sort\nPress 5 to Display\nPress 6 to Exit\n");
     scanf("%d", &ch);
 
     while(1){
