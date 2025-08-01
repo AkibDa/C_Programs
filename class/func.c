@@ -17,7 +17,22 @@ void search(int *arr, int size, int element){
 
 }
 
-void sort(){}
+void sort(int *arr, int size){
+
+    int temp=0;
+    for(int i=0;i<size-1;i++){
+        for(int j=0;j<size-i-1;j++){
+            if(arr[j] > arr[j+1]){
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    printf("Array sorted successfully.\n");
+    disp(arr, size);
+
+}
 
 void insert(int *arr, int size, int element, int position) {
 
@@ -100,10 +115,10 @@ int main(){
                 search(arr, size, element);
             break;
             case 4:
-            sort(arr, size);
+                sort(arr, size);
             break;
             case 5:
-            disp(arr, size);
+                disp(arr, size);
             break;
             case 6:
                 printf("Exiting...\n");
