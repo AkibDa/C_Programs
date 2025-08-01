@@ -4,6 +4,14 @@
 
 void disp(){}
 
+void search(){}
+
+void sort(){}
+
+void insert(){}
+
+void delete(){}
+
 int main(){
     int *arr;
     int size, element, position;
@@ -28,16 +36,22 @@ int main(){
     scanf("%d", &ch);
 
     while(1){
-        swtich(ch) {
+        switch(ch) {
             case 1:
+            insert(arr, size);
+            printf("Element inserted successfully.\n");
             break;
             case 2:
+            delete(arr, size);
             break;
             case 3:
+            search(arr, size);
             break;
             case 4:
+            sort(arr, size);
             break;
             case 5:
+            disp(arr, size);
             break;
             case 6:
                 printf("Exiting...\n");
