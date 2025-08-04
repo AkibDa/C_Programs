@@ -1,85 +1,76 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 5 // Define the maximum size of the queue
+#define MAX_SIZE 5
 
-// Structure for the queue
 struct Queue {
   int items[MAX_SIZE];
-  int front; // Index of the front of the queue
-  int rear;  // Index of the rear of the queue
+  int front;
+  int rear;
 };
 
-// Function to initialize the queue
 void initQueue(struct Queue* q) {
   q->front = -1;
   q->rear = -1;
 }
 
-// Function to check if the queue is full
 int isFull(struct Queue* q) {
   if ((q->front == 0 && q->rear == MAX_SIZE - 1) || (q->front == q->rear + 1)) {
-    return 1; // It is full
+    return 1;
   }
-  return 0; // It is not full
+  return 0;
 }
 
-// Function to check if the queue is empty
 int isEmpty(struct Queue* q) {
   if (q->front == -1) {
-    return 1; // It is empty
+    return 1;
   }
-  return 0; // It is not empty
+  return 0;
 }
 
-// Function to add an element to the queue (enqueue)
 void enqueue(struct Queue* q, int value) {
   if (isFull(q)) {
     printf("Queue is full! Cannot enqueue.\n");
   } else {
     if (q->front == -1) {
-      q->front = 0; // Initialize front for the first element
+      q->front = 0;
     }
-    q->rear = (q->rear + 1) % MAX_SIZE; // Use modulo for circular array logic
+    q->rear = (q->rear + 1) % MAX_SIZE;
     q->items[q->rear] = value;
     printf("Enqueued %d\n", value);
   }
 }
 
-// Function to remove an element from the queue (dequeue)
 int dequeue(struct Queue* q) {
   int dequeuedValue;
   if (isEmpty(q)) {
     printf("Queue is empty! Cannot dequeue.\n");
-    return -1; // Return a sentinel value for error
+    return -1;
   } else {
     dequeuedValue = q->items[q->front];
     if (q->front == q->rear) {
-      initQueue(q); // Reset the queue if the last element is dequeued
+      initQueue(q);
     } else {
-      q->front = (q->front + 1) % MAX_SIZE; // Use modulo for circular array logic
+      q->front = (q->front + 1) % MAX_SIZE;
     }
     printf("Dequeued %d\n", dequeuedValue);
     return dequeuedValue;
   }
 }
 
-// Function to display the elements of the queue
 void display(struct Queue* q) {
   int i;
   if (isEmpty(q)) {
     printf("Queue is empty.\n");
   } else {
     printf("Queue elements: ");
-    // Loop from front to rear, handling the circular nature
     for (i = q->front; i != q->rear; i = (i + 1) % MAX_SIZE) {
       printf("%d ", q->items[i]);
     }
-    printf("%d\n", q->items[i]); // Print the last element at rear
+    printf("%d\n", q->items[i]);
   }
 }
 
-// Main function with a menu
 int main() {
   struct Queue myQueue;
   initQueue(&myQueue);
