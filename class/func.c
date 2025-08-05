@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAXSIZE 10
+#define MAXSIZE 15
 
 void disp(int *arr, int size){
 
