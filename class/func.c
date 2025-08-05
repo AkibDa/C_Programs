@@ -105,11 +105,13 @@ int main(){
         scanf("%d", &arr[i]);
     }
 
-    printf("\nEnter your choice:\n");
-    printf("Press 1 to Insert\nPress 2 to Delete\nPress 3 to Search\nPress 4 to Sort\nPress 5 to Display\nPress 6 to Exit\n");
-    scanf("%d", &ch);
 
     while(1){
+
+        printf("\nEnter your choice:\n");
+        printf("Press 1 to Insert\nPress 2 to Delete\nPress 3 to Search\nPress 4 to Sort\nPress 5 to Display\nPress 6 to Exit\n");
+        scanf("%d", &ch);
+
         switch(ch) {
             case 1:
             if(size == MAXSIZE-1) {
