@@ -52,6 +52,7 @@ void insert(int *arr, int size, int element, int position) {
 
     if(position < 0 || position > size) {
         printf("Invalid position!\n");
+        return;
     }
     for(int i = size; i > position-1; i--) {
             arr[i] = arr[i - 1];
