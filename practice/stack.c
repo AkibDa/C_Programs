@@ -12,7 +12,19 @@ void push(int value,int *stack,int top){
     stack[top] = value;
     printf("%d pushed to stack.\n", value);
   }
-  
+
+}
+
+void pop(int *stack, int top) {
+
+  if (top == -1) {
+    printf("Stack Underflow! Cannot pop from empty stack.\n");
+  } else {
+    int popped_item = stack[top];
+    --top;
+    printf("%d popped from stack.\n", popped_item);
+  }
+
 }
 
 
@@ -50,7 +62,7 @@ int main(){
         push(value, stack, top);
         break;
       case 2:
-        pop();
+        pop(stack, top);
         break;
       case 3:
         peep();
