@@ -3,18 +3,23 @@
 
 #define MAX 10
 
+void push(int value,int *stack,int top){
+
+  if (top == MAX - 1) {
+    printf("Stack Overflow! Cannot push %d.\n", value);
+  } else {
+    ++top;
+    stack[top] = value;
+    printf("%d pushed to stack.\n", value);
+  }
+  
+}
+
+
 int main(){
 
   int *stack;
   int top = -1;
-  int size;
-
-  printf("Enter the size of the stack (max %d): ", MAX);
-  scanf("%d", &size);
-  if(size <= 0 || size > MAX) {
-      printf("Invalid size! Please enter a size between 1 and %d.\n", MAX);
-      return 1;
-  }
 
   stack = (int *)malloc((MAX) * sizeof(int));
     if (stack == NULL) {
@@ -42,7 +47,7 @@ int main(){
       case 1:
         printf("Enter value to push: ");
         scanf("%d", &value);
-        push(value);
+        push(value, stack, top);
         break;
       case 2:
         pop();
@@ -58,7 +63,7 @@ int main(){
         exit(0); 
       default:
         printf("Invalid choice! Please try again.\n");
-        
+
     }
   }
 
