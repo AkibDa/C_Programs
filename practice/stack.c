@@ -22,6 +22,46 @@ int main(){
         return 1;
     }
 
+  int choice, value;
+
+  printf("Stack Implementation using Array\n");
+  printf("--------------------------------\n");
+
+  while (1) {
+
+    printf("\n1. Push\n");
+    printf("2. Pop\n");
+    printf("3. Peep\n");
+    printf("4. Display\n");
+    printf("5. Exit\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+
+      case 1:
+        printf("Enter value to push: ");
+        scanf("%d", &value);
+        push(value);
+        break;
+      case 2:
+        pop();
+        break;
+      case 3:
+        peep();
+        break;
+      case 4:
+        display();
+        break;
+      case 5:
+        printf("Exiting program.\n");
+        exit(0); 
+      default:
+        printf("Invalid choice! Please try again.\n");
+        
+    }
+  }
+
   return 0;
 
 }
