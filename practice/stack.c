@@ -37,6 +37,19 @@ void peep(int *stack, int top) {
 
 }
 
+void display(int *stack, int top) {
+
+  if (top == -1) {
+    printf("Stack is empty. Nothing to display.\n");
+  } else {
+    printf("Stack elements: ");
+    for (int i = top; i >= 0; i--) {
+      printf("%d ", stack[i]);
+    }
+    printf("\n");
+  }
+
+}
 
 int main(){
 
