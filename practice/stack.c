@@ -27,6 +27,16 @@ void pop(int *stack, int top) {
 
 }
 
+void peep(int *stack, int top) {
+
+  if (top == -1) {
+    printf("Stack is empty! No element to peep.\n");
+  } else {
+    printf("Top element is: %d\n", stack[top]);
+  }
+
+}
+
 
 int main(){
 
@@ -65,10 +75,10 @@ int main(){
         pop(stack, top);
         break;
       case 3:
-        peep();
+        peep(stack, top);
         break;
       case 4:
-        display();
+        display(stack, top);
         break;
       case 5:
         printf("Exiting program.\n");
