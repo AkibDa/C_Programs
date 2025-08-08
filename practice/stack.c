@@ -3,25 +3,29 @@
 
 #define MAX 10
 
-void push(int value,int *stack,int top){
+void push(int *stack,int *top){
 
-  if (top == MAX - 1) {
+  int value;
+
+  if (*top == MAX - 1) {
     printf("Stack Overflow! Cannot push %d.\n", value);
   } else {
-    ++top;
-    stack[top] = value;
+    printf("Enter value to push: ");
+    scanf("%d", &value);
+    *top += 1;
+    stack[*top] = value;
     printf("%d pushed to stack.\n", value);
   }
 
 }
 
-void pop(int *stack, int top) {
+void pop(int *stack, int *top) {
 
-  if (top == -1) {
+  if (*top == -1) {
     printf("Stack Underflow! Cannot pop from empty stack.\n");
   } else {
-    int popped_item = stack[top];
-    --top;
+    int popped_item = stack[*top];
+    *top -= 1;
     printf("%d popped from stack.\n", popped_item);
   }
 
@@ -44,9 +48,8 @@ void display(int *stack, int top) {
   } else {
     printf("Stack elements: ");
     for (int i = top; i >= 0; i--) {
-      printf("%d ", stack[i]);
+      printf("%d\n", stack[i]);
     }
-    printf("\n");
   }
 
 }
@@ -80,12 +83,10 @@ int main(){
     switch (choice) {
 
       case 1:
-        printf("Enter value to push: ");
-        scanf("%d", &value);
-        push(value, stack, top);
+        push(stack, &top);
         break;
       case 2:
-        pop(stack, top);
+        pop(stack, &top);
         break;
       case 3:
         peep(stack, top);
