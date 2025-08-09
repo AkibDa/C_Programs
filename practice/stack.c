@@ -65,7 +65,7 @@ int main(){
         return 1;
     }
 
-  int choice, value;
+  int choice;
 
   printf("Stack Implementation using Array\n");
   printf("--------------------------------\n");
