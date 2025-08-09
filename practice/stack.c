@@ -97,6 +97,7 @@ int main(){
       case 5:
         printf("Exiting program.\n");
         exit(0); 
+        break;
       default:
         printf("Invalid choice! Please try again.\n");
 
