@@ -81,7 +81,16 @@ void infixToPostfix(char* infix, char* postfix) {
 }
 
 int main() {
-  char infix[MAX_SIZE], postfix[MAX_SIZE];
+
+  char *infix = (char*)malloc(MAX_SIZE * sizeof(char));
+  char *postfix = (char*)malloc(MAX_SIZE * sizeof(char));
+  
+  if (infix == NULL || postfix == NULL) {
+    printf("Memory allocation failed\n");
+    return 1;
+  }
+
+  printf("Infix to Postfix Converter\n");
 
   printf("Enter an infix expression: ");
   fgets(infix, MAX_SIZE, stdin);
