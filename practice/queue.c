@@ -4,7 +4,7 @@
 #define MAX_SIZE 10
 
 void Insert(int *queue, int *front, int *rear) {
-  if ((*rear + 1) % MAX_SIZE == *front) {
+  if (*rear == MAX_SIZE - 1 && *front == 0) {
     printf("Queue is full! Cannot insert.\n");
   } else {
     int value;
@@ -13,9 +13,25 @@ void Insert(int *queue, int *front, int *rear) {
     if (*front == -1) {
       *front = 0; 
     }
-    *rear = (*rear + 1) % MAX_SIZE;
+    *rear = *rear + 1 ;
     queue[*rear] = value;
     printf("%d inserted into queue.\n", value);
+  }
+}
+
+void Delete(int *queue, int *front, int *rear) {
+  if (*front == -1) {
+    printf("Queue is empty! Cannot delete.\n");
+    return -1;
+  } else {
+    int deletedValue = queue[*front];
+    if (*front == *rear) {
+      *front = -1;
+      *rear = -1;
+    } else {
+      *front = *front + 1;
+    }
+    printf("%d deleted from queue.\n", deletedValue);
   }
 }
 
