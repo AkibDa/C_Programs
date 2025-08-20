@@ -15,9 +15,7 @@ int main(){
     printf("1. Enqueue (Add element)\n");
     printf("2. Dequeue (Remove element)\n");
     printf("3. Display queue\n");
-    printf("4. Check if empty\n");
-    printf("5. Check if full\n");
-    printf("6. Exit\n");
+    printf("4. Exit\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
 
@@ -25,29 +23,15 @@ int main(){
       case 1:
         printf("Enter the value to enqueue: ");
         scanf("%d", &value);
-        enqueue(&queue, value);
+        enqueue(queue, value);
         break;
       case 2:
-        dequeue(&myQueue);
+        dequeue(queue);
         break;
       case 3:
-        display(&myQueue);
+        display(queue);
         break;
       case 4:
-        if (isEmpty(&myQueue)) {
-            printf("Queue is empty.\n");
-        } else {
-            printf("Queue is not empty.\n");
-        }
-        break;
-      case 5:
-        if (isFull(&myQueue)) {
-            printf("Queue is full.\n");
-        } else {
-            printf("Queue is not full.\n");
-        }
-        break;
-      case 6:
         printf("Exiting program.\n");
         exit(0);
       default:
