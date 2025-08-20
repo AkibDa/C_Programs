@@ -66,13 +66,13 @@ int main(){
 
     switch (choice) {
       case 1:
-        enqueue(queue, &front, &rear);
+        Insert(queue, &front, &rear);
         break;
       case 2:
-        dequeue(queue, &front, &rear);
+        Delete(queue, &front, &rear);
         break;
       case 3:
-        display(queue, front, rear);
+        Display(queue, front, rear);
         break;
       case 4:
         printf("Exiting program.\n");
