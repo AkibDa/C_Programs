@@ -5,7 +5,7 @@
 
 void Insert(int *queue, int *front, int *rear) {
   if (*rear == MAX_SIZE - 1 && *front == 0) {
-    printf("Queue is full! Cannot insert.\n");
+    printf("Overflow! Cannot insert.\n");
   } else {
     int value;
     printf("Enter value to insert: ");
@@ -19,9 +19,9 @@ void Insert(int *queue, int *front, int *rear) {
   }
 }
 
-void Delete(int *queue, int *front, int *rear) {
+int Delete(int *queue, int *front, int *rear) {
   if (*front == -1) {
-    printf("Queue is empty! Cannot delete.\n");
+    printf("Underflow! Cannot delete.\n");
     return -1;
   } else {
     int deletedValue = queue[*front];
@@ -31,7 +31,7 @@ void Delete(int *queue, int *front, int *rear) {
     } else {
       *front = *front + 1;
     }
-    printf("%d deleted from queue.\n", deletedValue);
+    return deletedValue;
   }
 }
 
@@ -69,7 +69,8 @@ int main(){
         Insert(queue, &front, &rear);
         break;
       case 2:
-        Delete(queue, &front, &rear);
+        int deletedValue = Delete(queue, &front, &rear);
+        printf("%d deleted from queue.\n", deletedValue);
         break;
       case 3:
         Display(queue, front, rear);
