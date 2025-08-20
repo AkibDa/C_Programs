@@ -35,6 +35,18 @@ void Delete(int *queue, int *front, int *rear) {
   }
 }
 
+void Display(int *queue, int front, int rear) {
+  if (front == -1) {
+    printf("Queue is empty.\n");
+  } else {
+    printf("Queue elements: ");
+    for (int i = front; i <= rear; i++) {
+      printf("%d ", queue[i]);
+    }
+    printf("\n");
+  }
+}
+
 int main(){
   int *queue;
   int front = -1, rear = -1, choice;
