@@ -71,7 +71,9 @@ int main(){
         break;
       case 2:
         int deletedValue = Delete(queue, &front, &rear);
-        printf("%d deleted from queue.\n", deletedValue);
+        if (deletedValue != -1) {
+          printf("%d deleted from queue.\n", deletedValue);
+        }
         break;
       case 3:
         Display(queue, front, rear);
