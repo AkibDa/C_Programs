@@ -11,8 +11,8 @@ struct Node* head = NULL;
 void insertAtBeginning(int data) {
   struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
   if (newNode == NULL) {
-      printf("Memory allocation failed!\n");
-      return;
+    printf("Memory allocation failed!\n");
+    return;
   }
 
   newNode->data = data;
