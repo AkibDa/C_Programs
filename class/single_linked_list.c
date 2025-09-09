@@ -35,7 +35,7 @@ void insertBefore(int data, int value){
         printf("No value present to insert before at.\n");
         return;
     }
-    if(head->next == NULL){
+    if(head == value && head->next == NULL){
         insertAtStart(data);
         return;
     }
