@@ -1,218 +1,143 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-struct Node {
-  int data;
-  struct Node* next;
+struct Node{
+    int data;
+    struct Node* next;
 };
 
 struct Node* head = NULL;
 
-void insertAtBeginning(int data) {
-  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-  if (newNode == NULL) {
-    printf("Memory allocation failed!\n");
-    return;
-  }
-
-  newNode->data = data;
-
-  newNode->next = head;
-
-  head = newNode;
-  printf("Inserted %d at the beginning.\n", data);
-}
-
-void insertAtEnd(int data) {
-  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-  if (newNode == NULL) {
-    printf("Memory allocation failed!\n");
-    return;
-  }
-
-  newNode->data = data;
-  newNode->next = NULL;
-
-  if (head == NULL) {
-    head = newNode;
-    printf("Inserted %d at the end (list was empty).\n", data);
-    return;
-  }
-
-  struct Node* temp = head;
-  while (temp->next != NULL) {
-    temp = temp->next;
-  }
-
-  temp->next = newNode;
-  printf("Inserted %d at the end.\n", data);
-}
-
-void insertNode(int key, int newData) {
-  struct Node* temp = head;
-  while (temp != NULL && temp->data != key) {
-    temp = temp->next;
-  }
-
-  if (temp == NULL) {
-    printf("Node with key %d not found. Cannot insert.\n", key);
-    return;
-  }
-
-  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-  if (newNode == NULL) {
-    printf("Memory allocation failed!\n");
-    return;
-  }
-
-  newNode->data = newData;
-
-  newNode->next = temp->next;
-  temp->next = newNode;
-  printf("Inserted %d after node with key %d.\n", newData, key);
-}
-
-void deleteAtBeginning() {
-  if (head == NULL) {
-    printf("List is empty. Cannot delete from the beginning.\n");
-    return;
-  }
-
-  struct Node* temp = head;
-
-  head = head->next;
-
-  free(temp);
-  printf("Deleted the first element from the list.\n");
-}
-
-void deleteAtEnd() {
-  if (head == NULL) {
-    printf("List is empty. Cannot delete from the end.\n");
-    return;
-  }
-
-  if (head->next == NULL) {
-    free(head);
-    head = NULL;
-    printf("Deleted the only element from the list.\n");
-    return;
-  }
-
-  struct Node* temp = head;
-  while (temp->next->next != NULL) {
-    temp = temp->next;
-  }
-
-  free(temp->next);
-
-  temp->next = NULL;
-  printf("Deleted the last element from the list.\n");
-}
-
-void deleteNode(int key) {
-  struct Node *temp = head, *prev = NULL;
-
-  if (temp != NULL && temp->data == key) {
-    head = temp->next; 
-    free(temp);        
-    printf("Node with key %d deleted.\n", key);
-    return;
-  }
-
-  while (temp != NULL && temp->data != key) {
-    prev = temp;
-    temp = temp->next;
-  }
-
-  if (temp == NULL) {
-    printf("Node with key %d not found in the list.\n", key);
-    return;
-  }
-
-  prev->next = temp->next;
-
-  free(temp);
-  printf("Node with key %d deleted.\n", key);
-}
-
-void displayList() {
-  if (head == NULL) {
-    printf("The list is empty.\n");
-    return;
-  }
-  struct Node* temp = head;
-  printf("Linked List: ");
-  while (temp != NULL) {
-    printf("%d -> ", temp->data);
-    temp = temp->next;
-  }
-  printf("NULL\n");
-}
-
-int main() {
-    int choice, data, key, newData;
-
-    do {
-      printf("\n--- Linked List Menu ---\n");
-      printf("1. Insert at the beginning\n");
-      printf("2. Insert at the end\n");
-      printf("3. Insert after a specific key\n");
-      printf("4. Delete a node with a value\n");
-      printf("5. Delete the first element\n");
-      printf("6. Delete the last element\n");
-      printf("7. Display the list\n");
-      printf("8. Exit\n");
-      printf("Enter your choice: ");
-      scanf("%d", &choice);
-
-      switch (choice) {
-        case 1:
-          printf("Enter data to insert: ");
-          scanf("%d", &data);
-          insertAtBeginning(data);
-          break;
-        case 2:
-          printf("Enter data to insert: ");
-          scanf("%d", &data);
-          insertAtEnd(data);
-          break;
-        case 3:
-          printf("Enter the key to insert after: ");
-          scanf("%d", &key);
-          printf("Enter the new data to insert: ");
-          scanf("%d", &newData);
-          insertNode(key, newData);
-          break;
-        case 4:
-          printf("Enter key to delete: ");
-          scanf("%d", &key);
-          deleteNode(key);
-          break;
-        case 5:
-          deleteAtBeginning();
-          break;
-        case 6:
-          deleteAtEnd();
-          break;
-        case 7:
-          displayList();
-          break;
-        case 8:
-          printf("Exiting program.\n");
-          break;
-        default:
-          printf("Invalid choice. Please try again.\n");
-      }
-    } while (choice != 8);
-
-    struct Node* current = head;
-    struct Node* nextNode;
-    while (current != NULL) {
-      nextNode = current->next;
-      free(current);
-      current = nextNode;
+void createLinkedList(){
+    int size,data;
+    printf("Enter the size of the linkedlist you want: ");
+    scanf("%d",&size);
+    for(int i=1;i<=size;i++){
+        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        printf("Enter %d element: ",i);
+        scanf("%d",&data);
+        newNode->data = data;
+        newNode->next = head;
+        head = newNode;
     }
+}
 
+void insertAtStart(int data){
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = head;
+    head = newNode;
+    printf("%d is inserted in the beginning.\n",data);
+}
+
+void insertBefore(int data, int value){
+    if(head == NULL){
+        printf("No value present to insert before at.\n");
+        return;
+    }
+    if(head->next == NULL){
+        insertAtStart(data);
+        return;
+    }
+    struct Node* temp = head;
+    struct Node* pretemp = head;
+    while(temp != NULL){
+        if(temp->data == value){
+            struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+            newNode->data = data;
+            newNode->next = temp;
+            pretemp->next = newNode;
+            printf("%d inserted before %d.\n",data,value);
+            return;
+        } else {
+            pretemp = temp;
+            temp = temp->next;
+        }
+    }
+    printf("%d is not present in the linkedlist.\n",value);
+}
+
+void deleteStart(){
+    if(head == NULL){
+        printf("No value present to delete.\n");
+        return;
+    }
+    struct Node* temp = head;
+    head = temp->next;
+    free(temp);
+    printf("First element deleted.\n");
+}
+
+void deleteEnd(){
+    if(head == NULL){
+        printf("No value present to delete.\n");
+        return;
+    }
+    if(head->next == NULL){
+        free(head);
+        printf("Deleted only element present.\n");
+    }
+    struct Node* temp = head;
+    while(temp->next->next != NULL){
+        temp = temp->next;
+    }
+    free(temp->next);
+    temp->next = NULL;
+    printf("Deleted the last element.\n");
+}
+
+void display(){
+    if(head == NULL){
+        printf("No element present to display.\n");
+        return;
+    }
+    printf("The elements present in the linkedlist are:\n");
+    struct Node* temp = head;
+    while(temp != NULL){
+        printf("%d -> ",temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main(){
+    int choice,value,data;
+    do{
+        printf("Menu For Linkedlist functions:\n");
+        printf("0: Create Linkedlist\n1: Insert at beginning\n2: Insert before a value\n3: Delete at start\n4: Delete at end\n5: Display\n6: Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+        switch(choice){
+            case 0:
+                createLinkedList();
+                break;
+            case 1:
+                printf("Enter the data u want to insert: ");
+                scanf("%d",&data);
+                insertAtStart(data);
+                break;
+            case 2:
+                printf("Enter the value u want to insert before: ");
+                scanf("%d",&value);
+                printf("Enter the data u want to insert: ");
+                scanf("%d", &data);
+                insertBefore(data, value);
+                break;
+            case 3:
+                deleteStart();
+                break;
+            case 4:
+                deleteEnd();
+                break;
+            case 5:
+                display();
+                break;
+            case 6:
+                printf("Exiting the program...\n");
+                break;
+            default:
+                printf("Invalid option !\n");
+        }
+    }while(choice != 6);
     return 0;
 }
