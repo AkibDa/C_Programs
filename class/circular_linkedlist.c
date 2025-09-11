@@ -65,6 +65,64 @@ void insertAtEnd(int data){
   printf("%d is inserted in the beginning.\n",data);
 }
 
+void deleteAtStart(){
+  if(head == NULL){
+    printf("No value present to delete.\n");
+    return;
+  }
+  if(head->next == head){
+    free(head);
+    head = NULL;
+    printf("Deleted only element present.\n");
+    return;
+  }
+  struct Node* temp = head;
+  while(temp->next != head){
+    temp = temp->next;
+  }
+  struct Node* toDelete = head;
+  head = head->next;
+  temp->next = head;
+  free(toDelete);
+  printf("First element deleted.\n");
+}
+
+void deleteAtEnd(){
+  if(head == NULL){
+    printf("No value present to delete.\n");
+    return;
+  }
+  if(head->next == head){
+    free(head);
+    head = NULL;
+    printf("Deleted only element present.\n");
+    return;
+  }
+  struct Node* temp = head;
+  struct Node* pretemp = head;
+  while(temp->next != head){
+    pretemp = temp;
+    temp = temp->next;
+  }
+  pretemp->next = head;
+  free(temp);
+  printf("Deleted the last element.\n");
+}
+
+void display(){
+  if(head == NULL){
+    printf("No value present to display.\n");
+    return;
+  }
+  struct Node* temp = head;
+  printf("The elements in the circular linkedlist are: ");
+  do{
+    printf("%d -> ",temp->data);
+    temp = temp->next;
+  }while(temp != head);
+  printf("%d (head)\n",head->data);
+}
+
 int main(){
   int choice,data;
   do{
