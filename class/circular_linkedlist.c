@@ -1,6 +1,32 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+struct Node{int data; struct Node* next;};
+struct Node* head = NULL;
+
+void createLinkedList(){
+  int size,data;
+  printf("Enter the size of the circular linkedlist you want: ");
+  scanf("%d",&size);
+  for(int i=0;i<size;i++){
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    printf("Enter %d element: ",i+1);
+    scanf("%d",&data);
+    newNode->data = data;
+    if(head == NULL){
+      head = newNode;
+      newNode->next = head;
+    }
+    else{
+      struct Node* temp = head;
+      while(temp->next != head){
+        temp = temp->next;
+      }
+      temp->next = newNode;
+      newNode->next = head;
+    }
+  }
+}
 
 int main(){
   int choice,data;
