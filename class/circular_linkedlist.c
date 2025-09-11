@@ -28,6 +28,43 @@ void createLinkedList(){
   }
 }
 
+void insertAtStart(int data){
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+  newNode->data = data;
+  if(head == NULL){
+    head = newNode;
+    newNode->next = head;
+  }
+  else{
+    struct Node* temp = head;
+    while(temp->next != head){
+      temp = temp->next;
+    }
+    temp->next = newNode;
+    newNode->next = head;
+    head = newNode;
+  }
+  printf("%d is inserted in the beginning.\n",data);
+}
+
+void insertAtEnd(int data){
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+  newNode->data = data;
+  if(head == NULL){
+    head = newNode;
+    newNode->next = head;
+  }
+  else{
+    struct Node* temp = head;
+    while(temp->next != head){
+      temp = temp->next;
+    }
+    temp->next = newNode;
+    newNode->next = head;
+  }
+  printf("%d is inserted in the beginning.\n",data);
+}
+
 int main(){
   int choice,data;
   do{
