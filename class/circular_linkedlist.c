@@ -62,7 +62,7 @@ void insertAtEnd(int data){
     temp->next = newNode;
     newNode->next = head;
   }
-  printf("%d is inserted in the beginning.\n",data);
+  printf("%d is inserted in the end.\n",data);
 }
 
 void insertAtPosition(int data, int position){
