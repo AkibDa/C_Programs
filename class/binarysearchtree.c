@@ -34,31 +34,23 @@ struct Node* deleteNode(struct Node* root, int data) {
 
   if (data < root->data) {
     root->left = deleteNode(root->left, data);
-
   } else if (data > root->data) {
     root->right = deleteNode(root->right, data);
-  
-  } else {
-    
+  } else {    
     if (root->left == NULL && root->right == NULL) {
       free(root);
-      root = NULL;
-    
+      root = NULL;    
     } else if (root->left == NULL) {
       struct Node* temp = root;
       root = root->right;      
       free(temp);              
-    
     } else if (root->right == NULL) {
       struct Node* temp = root; 
       root = root->left;        
-      free(temp);               
-    
+      free(temp);                   
     } else {
       struct Node* temp = findMin(root->right);
-
       root->data = temp->data;
-
       root->right = deleteNode(root->right, temp->data);
     }
   }
