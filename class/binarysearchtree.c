@@ -17,6 +17,55 @@ struct Node* createNode(int data) {
   return newNode;
 }
 
+struct Node* findMin(struct Node* node) {
+  struct Node* current = node;
+
+  while (current != NULL && current->left != NULL) {
+    current = current->left;
+  }
+
+  return current;
+}
+
+struct Node* deleteNode(struct Node* root, int data) {
+  if (root == NULL) {
+    return root;
+  }
+
+  if (data < root->data) {
+    root->left = deleteNode(root->left, data);
+
+  } else if (data > root->data) {
+    root->right = deleteNode(root->right, data);
+  
+  } else {
+    
+    if (root->left == NULL && root->right == NULL) {
+      free(root);
+      root = NULL;
+    
+    } else if (root->left == NULL) {
+      struct Node* temp = root;
+      root = root->right;      
+      free(temp);              
+    
+    } else if (root->right == NULL) {
+      struct Node* temp = root; 
+      root = root->left;        
+      free(temp);               
+    
+    } else {
+      struct Node* temp = findMin(root->right);
+
+      root->data = temp->data;
+
+      root->right = deleteNode(root->right, temp->data);
+    }
+  }
+  
+  return root;
+}
+
 struct Node* insert(struct Node* node, int data) {
   if (node == NULL) {
     return createNode(data);
@@ -58,7 +107,7 @@ int main() {
   int data[] = {50, 30, 20, 40, 70, 60, 80};
   do{
     printf("Menu For Binary Search Tree functions:\n");
-    printf("1: Insert\n2: Preorder Traversal\n3: Inorder Traversal\n4: Postorder Traversal\n5: Exit\n");
+    printf("1: Insert\n2: Preorder Traversal\n3: Inorder Traversal\n4: Postorder Traversal\n5: Delete Node\n6: Exit\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
     switch (choice) {
@@ -84,11 +133,14 @@ int main() {
         printf("\n");
         break;
       case 5:
-        printf("Exiting...\n");
+        deleteNode(root, root->data);
+        break;
+      case 6:
+        printf("Exiting program.\n");
         break;
       default:
         printf("Invalid choice. Please try again.\n");
     }
-  }while (choice != 5);
+  }while (choice != 6);
   return 0;
 }
