@@ -94,19 +94,30 @@ void postorderTraversal(struct Node* node) {
   }
 }
 
+struct Node* search(struct Node* root, int data)
+{
+  if (root == NULL || root->data == data)
+    return root;
+
+  if (data < root->data)
+    return search(root->left, data);
+
+  return search(root->right, data); 
+}
+
+
 int main() {
-  int choice;
+  int choice,key;
   int data[] = {50, 30, 20, 40, 70, 60, 80};
   do{
     printf("Menu For Binary Search Tree functions:\n");
-    printf("1: Insert\n2: Preorder Traversal\n3: Inorder Traversal\n4: Postorder Traversal\n5: Delete Node\n6: Exit\n");
+    printf("1: Insert\n2: Preorder Traversal\n3: Inorder Traversal\n4: Postorder Traversal\n5: Delete Node\n6: Search\n7: Exit\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
     switch (choice) {
       case 1:
         for(int i = 0; i < 7; i++) {
           root = insert(root, data[i]);
-          printf("%d is inserted in the BST.\n", data[i]);
         }
         break;
       case 2:
@@ -125,14 +136,30 @@ int main() {
         printf("\n");
         break;
       case 5:
-        deleteNode(root, root->data);
+        printf("Enter the value to delete: ");
+        scanf("%d", &key);
+        if(deleteNode(root, key) != NULL) {
+          root = deleteNode(root, key);
+          printf("Value %d deleted from the BST.\n", key);
+        } else {
+          printf("Value %d not found in the BST.\n", key);
+        }
         break;
-      case 6:
+      case 6: 
+          printf("Enter the value to search: ");
+          scanf("%d", &key);
+          if (search(root, key) != NULL) {
+            printf("Value %d found in the BST.\n", key);
+          } else {
+            printf("Value %d not found in the BST.\n", key);
+          }
+        break;
+      case 7:
         printf("Exiting program.\n");
         break;
       default:
         printf("Invalid choice. Please try again.\n");
     }
-  }while (choice != 6);
+  }while (choice != 7);
   return 0;
 }
